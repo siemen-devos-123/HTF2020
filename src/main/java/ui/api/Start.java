@@ -37,6 +37,6 @@ public class Start {
 
         ChallengeSolver solver = new ChallengeSolver(challenge);
 
-        System.out.println(solver.GetFirstAndLastdayOfMonth("6", "1974"));
+        System.out.println(solver.GetFirstAndLastDayOfMonth("6", "1974"));
     }
 }
