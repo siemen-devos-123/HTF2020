@@ -43,7 +43,13 @@ public class ChallengeSolver {
         return hashMap.get(index).toString();
     }
 
-    public String GetFirstAndLastdayOfMonth(String month, String year) {
+    public String reverseString(String string) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(string);
+        return builder.reverse().toString();
+    }
+
+    public String getFirstAndLastdayOfMonth(String month, String year) {
         int m = Integer.parseInt(month);
         int y = Integer.parseInt(year);
 
