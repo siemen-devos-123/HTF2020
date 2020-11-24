@@ -1,5 +1,6 @@
 package domain;
 
+import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -40,6 +41,15 @@ public class ChallengeSolver {
 
     public String getElementOfHashmap(String index, HashMap hashMap) {
         return hashMap.get(index).toString();
+    }
+
+    public String GetFirstAndLastdayOfMonth(String month, String year) {
+        int m = Integer.parseInt(month);
+        int y = Integer.parseInt(year);
+
+        YearMonth ym = YearMonth.of(y, m);
+
+        return String.format("%s-%s", ym.atDay(1).getDayOfWeek().name(), ym.atEndOfMonth().getDayOfWeek().name());
     }
 
     public String isInAlphabeticOrder(String string) {

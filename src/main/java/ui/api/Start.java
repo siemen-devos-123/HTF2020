@@ -1,5 +1,7 @@
 package ui.api;
 
+import domain.Challenge;
+import domain.ChallengeSolver;
 import domain.maze.Maze;
 import domain.maze.MazeFactory;
 import io.vertx.core.Vertx;
@@ -30,5 +32,11 @@ public class Start {
                     System.out.println(maze.getEndPosition());
                 }
             });
+
+        Challenge challenge = new Challenge("", "", "");
+
+        ChallengeSolver solver = new ChallengeSolver(challenge);
+
+        System.out.println(solver.GetFirstAndLastdayOfMonth("6", "1974"));
     }
 }
