@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,6 +36,19 @@ public class ChallengeSolver {
         }
 
         return builder.toString().trim();
+    }
+
+    public String getElementOfHashmap(String index, HashMap hashMap) {
+        return hashMap.get(index).toString();
+    }
+
+    public String isInAlphabeticOrder(String string) {
+        for (int i = 0; i != string.length(); ++i) {
+            if (!Character.isLetter(string.charAt(i))) {
+                return "N";
+            }
+        }
+        return "Y";
     }
 
     private boolean isPrime(int number) {
