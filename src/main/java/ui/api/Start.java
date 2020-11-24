@@ -22,7 +22,6 @@ public class Start {
     }
 
     private void run(){
-        System.out.println("hi");
 
         WebClient client = WebClient.create(Vertx.vertx());
         MazeFactory factory = new MazeFactory();
@@ -34,12 +33,11 @@ public class Start {
                     .send(ar -> {
                         if(ar.succeeded()){
                             HttpResponse<Buffer> response = ar.result();
-                            System.out.println(response.bodyAsJsonObject());
+                            System.out.println("maze" + response.bodyAsJsonObject());
 
                             Maze maze = factory.create(response.bodyAsJsonObject());
 
                             List<Position> path = new MazeSolver(maze).solve();
-                            System.out.println(path);
                             JsonObject solution = JsonObject.mapFrom(new Solution(path));
                             System.out.println(solution);
 
@@ -48,7 +46,6 @@ public class Start {
                                         .post(DOMAIN, String.format("/maze/%s", maze.getId()))
                                         .sendJson(solution, postResponse -> {
                                             if(postResponse.succeeded()){
-                                                System.out.println("sent");
                                                 HttpResponse<Buffer> response2 = postResponse.result();
                                                 System.out.println(response2.bodyAsString());
                                             }
