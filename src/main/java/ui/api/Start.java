@@ -37,7 +37,6 @@ public class Start {
 
         ChallengeSolver solver = new ChallengeSolver(challenge);
 
-        System.out.println(solver.getFirstAndLastdayOfMonth("6", "1974"));
-        System.out.println(solver.reverseString("rKvEq8lA06yduNxn07BQheHsQuXoDyJrc5yMVL4ne2UQ5sAUHF4RQdJopeYkoqcHcIHHvOPtx3QHLxZYw8s0s3BqQXzq13Zta8GkFrT6MphpKFPEcGReiLVllchjbI3kGhDvgIT"));
-    }
+        System.out.println(solver.isDisariumNumber("784"));
+       }
 }

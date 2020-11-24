@@ -43,6 +43,35 @@ public class ChallengeSolver {
         return hashMap.get(index).toString();
     }
 
+    public String  isDisariumNumber(String inputNumber) {
+        int number = Integer.parseInt(inputNumber);
+        int len = inputNumber.length();
+
+        int numberCopy = number;
+
+        int sum = 0;
+
+        while (number > 0)
+        {
+            int lastDigit = number % 10;
+
+            sum = sum + (int) Math.pow(lastDigit, len);
+
+            number = number / 10;
+
+            len--;
+        }
+
+        if (sum == numberCopy)
+        {
+            return "Y";
+        }
+        else
+        {
+            return "N";
+        }
+    }
+
     public String reverseString(String string) {
         StringBuilder builder = new StringBuilder();
         builder.append(string);
