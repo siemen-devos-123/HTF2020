@@ -27,6 +27,17 @@ public class Maze {
         return List.copyOf(cells);
     }
 
+    public Cell getCellByPosition(Position position){
+        Cell res = null;
+        for(Cell cell : getCells()){
+            if(cell.getPosition().equals(position)){
+                res = cell;
+            }
+        }
+
+        return res;
+    }
+
     public Position getEndPosition(){
         return getCells().get(getCells().size() - 1).getPosition();
     }
