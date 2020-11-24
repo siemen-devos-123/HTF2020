@@ -57,7 +57,7 @@ public class MazeSolver {
             Cell min = maze.getCellByPosition(possibleSteps.get(0));
             for (Position step : possibleSteps){
                 Cell cell = maze.getCellByPosition(step);
-                if(cells.containsKey(cell) && !path.contains(step)){
+                if(cells.containsKey(cell) && cells.containsKey(min) && !path.contains(step)){
                     if(cells.get(min).getfCost() > cells.get(cell).getfCost()){
                         min = cell;
                     }

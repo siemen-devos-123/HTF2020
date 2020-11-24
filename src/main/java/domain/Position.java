@@ -1,8 +1,12 @@
 package domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Position {
+@JsonDeserialize
+public class Position implements Serializable {
     private int x;
     private int y;
 
