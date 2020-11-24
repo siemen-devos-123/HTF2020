@@ -1,5 +1,6 @@
 package ui.api;
 
+import domain.MazeSolver;
 import domain.maze.Maze;
 import domain.maze.MazeFactory;
 import io.vertx.core.Vertx;
@@ -26,8 +27,12 @@ public class Start {
             .send(ar -> {
                 if(ar.succeeded()){
                     HttpResponse<Buffer> response = ar.result();
+                    System.out.println(response.bodyAsJsonObject());
+
                     Maze maze = factory.create(response.bodyAsJsonObject());
                     System.out.println(maze.getEndPosition());
+
+                    new MazeSolver(maze).solve();
                 }
             });
     }

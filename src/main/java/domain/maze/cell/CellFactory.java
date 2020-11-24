@@ -21,6 +21,10 @@ public class CellFactory {
             );
         }
 
+        if(res.getPosition().equals(new Position(0, 0))){
+            res.getWalls().add(Walls.NORTH);
+        }
+
 
         return res;
     }

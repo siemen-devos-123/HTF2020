@@ -46,6 +46,11 @@ public class Cell {
 
     @Override
     public String toString() {
-        return String.format("%s %s, challenge %s", getPosition(), getWalls(), getChallenge());
+        String challenge = String.format("%s", getChallenge());
+        if(challenge.equals("null")){
+            challenge = "geen";
+        }
+
+        return String.format("%s %s, challenge %s", getPosition(), getWalls(), challenge);
     }
 }
