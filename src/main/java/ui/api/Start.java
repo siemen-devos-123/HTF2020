@@ -32,7 +32,7 @@ public class Start {
                     Maze maze = factory.create(response.bodyAsJsonObject());
                     System.out.println(maze.getEndPosition());
 
-                    new MazeSolver(maze).solve();
+                    System.out.println(new MazeSolver(maze).solve());
                 }
             });
     }

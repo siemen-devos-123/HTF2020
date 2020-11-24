@@ -2,6 +2,7 @@ package domain.maze;
 
 import domain.maze.cell.Cell;
 import domain.maze.cell.CellFactory;
+import domain.maze.cell.Walls;
 import io.vertx.core.json.JsonObject;
 
 public class MazeFactory {
@@ -19,6 +20,8 @@ public class MazeFactory {
                 .stream()
                 .map((json) -> { return createCell((JsonObject) json); })
                 .forEach((cell) -> {res.addCell((Cell) cell);});
+
+        res.getCells().get(res.getCells().size() - 1).getWalls().add(Walls.SOUTH);
 
         return res;
     }

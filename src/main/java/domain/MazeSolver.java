@@ -4,9 +4,7 @@ import domain.maze.Maze;
 import domain.maze.cell.Cell;
 import domain.maze.cell.Walls;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MazeSolver {
@@ -27,13 +25,53 @@ public class MazeSolver {
         this.currentPosition = currentPosition;
     }
 
-    public void solve(){
+    public List<Position> solve(){
         while(! currentPosition.equals(endPosition)){
-            System.out.println(currentPosition);
             calculateNeighbors();
             nextCurrentPosition();
         }
 
+        List<Position> path = new LinkedList<>();
+        while(! currentPosition.equals(new Position(0, 0))){
+
+            Cell currentCell = maze.getCellByPosition(currentPosition);
+            path.add(currentPosition);
+
+            List<Position> possibleSteps = new LinkedList<>();
+            if(!currentCell.getWalls().contains(Walls.NORTH)){
+
+                possibleSteps.add(new Position(currentPosition.getX(), currentPosition.getY() - 1));
+            }
+            if(!currentCell.getWalls().contains(Walls.EAST)){
+                possibleSteps.add(new Position(currentPosition.getX() + 1, currentPosition.getY()));
+            }
+            if(!currentCell.getWalls().contains(Walls.SOUTH)){
+                possibleSteps.add(new Position(currentPosition.getX(), currentPosition.getY() + 1));
+            }
+            if(!currentCell.getWalls().contains(Walls.WEST)){
+                possibleSteps.add(new Position(currentPosition.getX() - 1, currentPosition.getY()));
+            }
+
+
+
+            Cell min = maze.getCellByPosition(possibleSteps.get(0));
+            for (Position step : possibleSteps){
+                Cell cell = maze.getCellByPosition(step);
+                if(cells.containsKey(cell) && !path.contains(step)){
+                    if(cells.get(min).getfCost() > cells.get(cell).getfCost()){
+                        min = cell;
+                    }
+                }
+
+            }
+            currentPosition = min.getPosition();
+        }
+
+        path.add(new Position(0,0));
+
+        Collections.reverse(path);
+
+        return path;
 
     }
 
@@ -65,7 +103,7 @@ public class MazeSolver {
     }
 
     public void calculateNextCell(Cell current, Position next){
-        System.out.println("next" + next);
+
 
         Cell nCell = maze.getCellByPosition(next);
         if(!cells.containsKey(nCell)){
