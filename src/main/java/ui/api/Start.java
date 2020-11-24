@@ -1,14 +1,20 @@
 package ui.api;
 
 import domain.MazeSolver;
+import domain.Position;
+import domain.Solution;
 import domain.maze.Maze;
 import domain.maze.MazeFactory;
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
+import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.client.HttpResponse;
 import io.vertx.ext.web.client.WebClient;
 
+import java.util.List;
+
 public class Start {
+    private static final String DOMAIN = "maze-staging.bewire.org";
     private static final String TEAM_ID = "d8c55a8b-72bd-4521-8626-ccf2c2ee1445";
 
     public static void main(String[] args) {
